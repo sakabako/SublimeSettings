@@ -1,0 +1,19 @@
+<snippet>
+	<content><![CDATA[
+/**
+ * Description of your module
+ * @name ${1:module_name}
+ * @version ${2:version}
+ * @requires bam, jQuery
+ */
+(function(bam, \$, undef){
+	/** @lends ${1:module_name} */
+	var module = {
+		//Public API
+	};
+	bam.register("${1:module_name}", ${2:version}, module);
+})(bam, jQuery);]]></content>
+<scope>source.js</scope>
+<tabTrigger>bam</tabTrigger>
+<description>BAM Require Module</description>
+</snippet>

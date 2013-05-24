@@ -1,0 +1,77 @@
+<snippet>
+	<content><![CDATA[
+/**
+* MVC Appliucation Module
+* @name ${1:name}
+* @author ${2:author}
+* @version ${3:version}
+* @requires bam, jQuery, require, ${4:required}
+*/
+(function(bam, \$, undef) {
+	/** @lends ${1:name} */
+	var req = bam.require(["data", "mvc-1.0"], {
+		useArguments: true
+	}),
+		APS = Array.prototype.slice,
+		module, Controller, Model, Operations;
+	/**
+	 * MVC Application
+	 * Controller - Renderable components that use templates as Views (i.e. this.view = template)
+	 * Model - Namespace to hold named DataProvider's or any other data
+	 * Operations - Public operations exposed through api() facade call
+	 */
+	req.done(function(data, mvc){
+		Controller = new mvc.Controller("${1:name}",{
+			myAction: function(){
+				this.view = "";
+			}
+		});
+
+		Model = {
+			myData: new data.JsonDataProvider({
+				url: "data source",
+				dataNode: "my rows"
+			})
+		};
+
+		Operations = {
+			myOperation: function(toContainer){
+				return Model.myData.load().done(function(){
+					/* Call MVC renderAction and pass in Model data */
+					Controller.renderAction("myAction", toContainer, this.getRows());
+				});
+			}
+		};
+
+		module = {
+			/* Initialization method */
+			init: function(){
+
+			},
+			/**
+			 * Generic API facade method that forwards all requests to Operations
+			 * This method accepts any number of arguments after operation.
+			 * All additional arguments will be forwarded to Operation methods.
+			 * @param  {string}  operation Operations method name
+			 * @return {var}  Returns whatever Operations method returns
+			 * @example module.api("myOperation" [, otherArguments]);
+			 */
+			api: function( /* operation, args */ ) {
+				var args = APS.apply(arguments),
+					operation = args.shift();
+				if (operation in Operations) {
+					return Operations[operation].apply(this, args);
+				} else {
+					throw new Error("Unsuported operation: " + operation);
+				}
+			}
+		};
+		bam.register("${1:name}", null, module);
+	});
+})(bam, jQuery);
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>mvc</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.js</scope>
+</snippet>
