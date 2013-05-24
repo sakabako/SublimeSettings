@@ -1,2 +1,4 @@
 Backup
 Settings
+*.pyc
+*.cache
