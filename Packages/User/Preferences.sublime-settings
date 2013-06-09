@@ -1,12 +1,43 @@
 {
 	"color_scheme": "Packages/TricoloreTheme/Tricolore-nobold.tmTheme",
+	"file_exclude_patterns":
+	[
+		"*.pyc",
+		"*.pyo",
+		"*.exe",
+		"*.dll",
+		"*.obj",
+		"*.o",
+		"*.a",
+		"*.lib",
+		"*.so",
+		"*.dylib",
+		"*.ncb",
+		"*.sdf",
+		"*.suo",
+		"*.pdb",
+		"*.idb",
+		".DS_Store",
+		"*.class",
+		"*.psd",
+		"*.db",
+		"._*",
+		".gitmodules",
+		".gitattributes"
+	],
+	"folder_exclude_patterns":
+	[
+		".svn",
+		".hg",
+		"CVS",
+		".git",
+		"node_modules"
+	],
 	"font_face": "Anonymous Pro",
 	"font_size": 19.0,
 	"ignored_packages":
 	[
 		"Vintage"
 	],
-	"word_wrap": true,
-    "folder_exclude_patterns": [".svn", ".hg", "CVS", ".git", "node_modules"],
-    "file_exclude_patterns": ["*.pyc", "*.pyo", "*.exe", "*.dll", "*.obj","*.o", "*.a", "*.lib", "*.so", "*.dylib", "*.ncb", "*.sdf", "*.suo", "*.pdb", "*.idb", ".DS_Store", "*.class", "*.psd", "*.db", "._*", ".gitmodules", ".gitattributes"]
+	"word_wrap": true
 }
