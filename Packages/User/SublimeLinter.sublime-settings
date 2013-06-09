@@ -37,7 +37,7 @@
     "sublimelinter_wrap_find": true,
 
     // If true, when the file is saved any errors will appear in a popup list
-    "sublimelinter_popup_errors_on_save": true,
+    "sublimelinter_popup_errors_on_save": false,
 
     // JavaScript linter: "gjslint" to use the closure javascript linter (if available),
     // or either "jshint" or "jslint" to use a built in linter.
@@ -54,6 +54,7 @@
         "evil": true,
         "regexdash": true,
         "browser": true,
+        "node": true,
         "wsh": true,
         "trailing": false,
         "sub": true,
