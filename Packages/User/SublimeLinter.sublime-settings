@@ -65,7 +65,7 @@
         "undef": true,
         "smarttabs": true,
         "unused": true,
-        "globals": {"define": false, "require": false, "requirejs": false, "bam": false, "jQuery": false, "$": false, "module": false, "console": false, "encodeURIComponent": false, "unescape": false, "escape": false, "process": false, "exports": false}
+        "globals": {"define": false, "require": false, "requirejs": false, "bam": false, "jQuery": false, "$": false, "module": false, "console": false, "encodeURIComponent": false, "unescape": false, "escape": false, "process": false, "exports": false, "nextTick": false, "setImmediate": false}
     },
 
     "csslint_options":
