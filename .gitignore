@@ -3,3 +3,4 @@ Settings
 *.pyc
 *.cache
 Package Control.last-run
+*.errors.log
