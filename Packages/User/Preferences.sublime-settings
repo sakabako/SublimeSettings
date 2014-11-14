@@ -32,7 +32,8 @@
 		"CVS",
 		".git",
 		"node_modules",
-		"bower_components"
+		"bower_components",
+		"vagrant-configs/src"
 	],
 	"font_face": "Anonymous Pro",
 	"font_size": 19.0,
@@ -41,5 +42,7 @@
 		"Vintage"
 	],
 	"indent_to_bracket": true,
-	"word_wrap": true
+	"word_wrap": true,
+	"ensure_newline_at_eof_on_save": true,
+	"show_full_path": true
 }
