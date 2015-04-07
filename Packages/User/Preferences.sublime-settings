@@ -1,5 +1,6 @@
 {
 	"color_scheme": "Packages/TricoloreTheme/Tricolore-nobold.tmTheme",
+	"ensure_newline_at_eof_on_save": true,
 	"file_exclude_patterns":
 	[
 		"*.pyc",
@@ -33,16 +34,17 @@
 		".git",
 		"node_modules",
 		"bower_components",
-		"vagrant-configs/src"
+		"vagrant-configs/src",
+		"hydra/build",
+		"kraken/build"
 	],
 	"font_face": "Anonymous Pro",
-	"font_size": 19.0,
+	"font_size": 20.0,
 	"ignored_packages":
 	[
 		"Vintage"
 	],
 	"indent_to_bracket": true,
-	"word_wrap": true,
-	"ensure_newline_at_eof_on_save": true,
-	"show_full_path": true
+	"show_full_path": true,
+	"word_wrap": true
 }

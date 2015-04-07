@@ -1,5 +1,5 @@
 """
-mdownx.tasklist
+pymdownx.tasklist
 An extension for Python Markdown.
 Github style tasklists
 
@@ -56,7 +56,7 @@ class TasklistTreeprocessor(Treeprocessor):
         return found
 
     def run(self, root):
-        """ Replace relative paths with absolute """
+        """ Find list items that start with [ ] or [x] or [X] """
 
         parent_map = dict((c, p) for p in root.getiterator() for c in p)
         task_items = []
@@ -91,9 +91,9 @@ class TasklistExtension(Extension):
         """Add GithubChecklistsTreeprocessor to Markdown instance"""
 
         ghckl = TasklistTreeprocessor(md)
-        md.treeprocessors.add("githubchecklists", ghckl, ">inline")
+        md.treeprocessors.add("task-list", ghckl, ">inline")
         md.registerExtension(self)
 
 
-def makeExtension(configs={}):
-    return TasklistExtension(configs=configs)
+def makeExtension(*args, **kwargs):
+    return TasklistExtension(*args, **kwargs)

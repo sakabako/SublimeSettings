@@ -1,7 +1,7 @@
 """
-Mdownx.magiclink
+pymdownx.magiclink
 An extension for Python Markdown.
-Find http|ftp links and turn them to actual links
+Find http|ftp links and email address and turn them to actual links
 
 MIT license.
 
@@ -12,8 +12,6 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-Modified to work with Sublime Markdown Preview
 """
 from __future__ import unicode_literals
 from __future__ import absolute_import
@@ -21,17 +19,24 @@ from ..extensions import Extension
 from ..inlinepatterns import LinkPattern
 from .. import util
 
-RE_MAIL = r'''(?i)((?:[\-+\w]([\w\-+]|\.(?!\.))+)@(?:[\w\-]+\.)(([\w\-]|(?<!\.)\.(?!\.))*)[a-z](?![\d.\-+_]))'''
+RE_MAIL = r'''(?x)(?i)
+(
+    (?:[\-+\w]([\w\-+]|\.(?!\.))+)    # Local part
+    @(?:[\w\-]+\.)                    # @domain part start
+    (([\w\-]|(?<!\.)\.(?!\.))*)[a-z]  # @domain.end (allow multiple dot names)
+    (?![\d\-_@])                      # Don't allow last char to be followed by these
+)
+'''
 
 RE_LINK = r'''(?x)(?i)
-    (
-        (
-            (ht|f)tp(s?)://(([a-zA-Z0-9\-._]+(\.[a-zA-Z0-9\-._]+)+)|localhost)|  # (HTTP|FTP)://
-            (?P<www>w{3})(\.[a-zA-Z0-9\-._]+(\.[a-zA-Z0-9\-._]+)+)               # WWW.
-        )
-        (/?)([a-zA-Z0-9\-.?,'/+&%$#_]*)([\d\w./%+-=&?:"',|~;]*)
-        [A-Za-z\d\-_~:/?#@!$*+=]
+(
+    \b(?:
+        (?:ht|f)tps?://(?:(?:[a-z\d\-_]+(?:\.[a-z\d\-._]+)+)|localhost)|  # (http|ftp)://
+        (?P<www>w{3}\.)[a-z\d\-_]+(?:\.[a-z\d\-._]+)+                     # www.
     )
+    /?[a-z\d\-._?,!'(){}\[\]/+&@%$#=:"|~;]*                               # url path, fragments, and query stuff
+    [a-z\d\-_~:/#@$*+=]                                                   # allowed end chars
+)
 '''
 
 
@@ -64,9 +69,9 @@ class MagiclinkExtension(Extension):
     def extendMarkdown(self, md, md_globals):
         """Adds support for turning html links to link tags"""
 
-        md.inlinePatterns.add("magiclink", MagiclinkPattern(RE_LINK, md), "<not_strong")
-        md.inlinePatterns.add("magicmail", MagicMailPattern(RE_MAIL, md), "<not_strong")
+        md.inlinePatterns.add("magic-link", MagiclinkPattern(RE_LINK, md), "<not_strong")
+        md.inlinePatterns.add("magic-mail", MagicMailPattern(RE_MAIL, md), "<not_strong")
 
 
-def makeExtension(configs={}):
-    return MagiclinkExtension(configs=dict(configs))
+def makeExtension(*args, **kwargs):
+    return MagiclinkExtension(*args, **kwargs)
