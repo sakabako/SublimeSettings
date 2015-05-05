@@ -94,13 +94,13 @@
 			<key>name</key>
 			<string>Variable</string>
 			<key>scope</key>
-			<string>variable.language, variable.other, meta.instance.constructor</string>
+			<string>variable.language, meta.instance.constructor</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
 				<string></string>
 				<key>foreground</key>
-				<string>#0A3F2B</string>
+				<string>#136154</string>
 			</dict>
 		</dict>
 		<dict>
