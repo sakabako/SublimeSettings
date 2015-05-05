@@ -100,7 +100,7 @@
 				<key>fontStyle</key>
 				<string></string>
 				<key>foreground</key>
-				<string>#4B8B4B</string>
+				<string>#126748</string>
 			</dict>
 		</dict>
 		<dict>
@@ -127,6 +127,19 @@
 				<string></string>
 				<key>foreground</key>
 				<string>#C4073F</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>String unquoted label</string>
+			<key>scope</key>
+			<string>string.unquoted.label</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string></string>
+				<key>foreground</key>
+				<string>#000000</string>
 			</dict>
 		</dict>
 		<dict>
@@ -235,7 +248,7 @@
 				<key>fontStyle</key>
 				<string></string>
 				<key>foreground</key>
-				<string>#111111</string>
+				<string>#333333</string>
 			</dict>
 		</dict>
 		<dict>
@@ -310,28 +323,6 @@
 			<dict>
 				<key>background</key>
 				<string>#FFD0D0</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>name</key>
-			<string>Embedded source</string>
-			<key>scope</key>
-			<string>text source, string.unquoted</string>
-			<key>settings</key>
-			<dict>
-				<key>background</key>
-				<string>#0000000D</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>name</key>
-			<string>Embedded embedded source</string>
-			<key>scope</key>
-			<string>text source string.unquoted, text source text source</string>
-			<key>settings</key>
-			<dict>
-				<key>background</key>
-				<string>#0000000F</string>
 			</dict>
 		</dict>
 		<dict>
